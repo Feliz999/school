@@ -32,7 +32,7 @@
                     <input type="email" name="email" class="form-control" placeholder="Correo Eléctrónico" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                 </div>
                 <div class="input-group mb-3 input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-regular fa-comment"></i></span>
+                    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-solid fa-user"></i></span>
                     <select name="type_people_id" id="type_people_id">
                         <option value="" disabled> --Elegir tipo de Padre de Familia--</option>
                         @foreach($typePeoples as $tp)
@@ -42,7 +42,7 @@
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-solid fa-image"></i></span>
-                    <img src="" alt="foto">
+                    <input type="file" class="form-control">
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-success">Guardar</button>
