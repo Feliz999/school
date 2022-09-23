@@ -14,5 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Auth::routes();
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::resource('typePeople','TypePeopleController');
+    Route::resource('typeUser','TypeUserController');
+    Route::resource('typeHomework','TypeHomeworkController');
+    Route::resource('ciclo','CicloController');
+    Route::resource('level','LevelController');
+    Route::resource('matter','MatterController');
+    Route::resource('section','SectionController');
+    Route::resource('student','StudentController');
+    Route::resource('teacher','TeacherController');
+    Route::resource('people','PeopleController');
+    Route::resource('homework','HomeworkController');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
