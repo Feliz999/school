@@ -9,7 +9,7 @@
             <form action="{{route('ciclo.destroy',$ciclo->id)}}" method="post" class="form">
                 <input name="_method" type="hidden" value="DELETE">
                 @csrf
-                <h4>Confirma que desea eliminar el ciclo: <b>{{$ciclo->ciclo}}</b></h4>
+                <h4>Confirma que desea eliminar el ciclo: <b>{{$ciclo->cicle}}</b></h4>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
                   <button class="btn btn-danger">Eliminar</button>

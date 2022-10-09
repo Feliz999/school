@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homework;
+use App\Models\TypeHomework;
 use Illuminate\Http\Request;
 
 class HomeworkController extends Controller
@@ -16,8 +17,9 @@ class HomeworkController extends Controller
     {
         //
         $homeworks = Homework::orderBy('id','desc')->simplePaginate(20);
+        $typeHomeworks = TypeHomework::all();
         if(isset($homeworks)){
-            return view('homework.index',compact('homework'));
+            return view('homework.index',compact('homeworks','typeHomeworks'));
         }else{
             return view('homework.index');
         }

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Level;
-use App\Models\Number;
+use App\Models\StudentHomework;
 use Illuminate\Http\Request;
 
-class LevelController extends Controller
+class StudentHomeworkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,11 @@ class LevelController extends Controller
     public function index()
     {
         //
-        $levels = Level::orderBy('id','desc')->simplePaginate(10);
-        $numbers = Number::all();
-        if(isset($levels)){
-            return view('level.index',compact('levels','numbers'));
+        $student_homeworks = StudentHomework::orderBy('id','desc')->simplePaginate(10);
+        if(isset($student_homeworks)){
+            return view('student_homework.index',compact('student_homeworks'));
         }else{
-            return view('level.index');
+            return view('student_homework.index');
         }
     }
 
@@ -44,17 +42,17 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         //
-        Level::create($request->all());
-        return redirect('level');
+        StudentHomework::create($request->all());
+        return redirect('student_homework');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentHomework  $studentHomework
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(StudentHomework $studentHomework)
     {
         //
     }
@@ -62,40 +60,40 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentHomework  $studentHomework
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit($id)
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentHomework  $studentHomework
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        $sh = StudentHomework::findOrFail($id);
+        $sh->update($request->all());
+        return redirect('student_homework');
         //
-        $level = Level::findOrFail($id);
-        $level->update($request->all());
-        return redirect('level');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentHomework  $studentHomework
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $level = Level::findOrFail($id);
-        $level->delete();
-        return redirect('level');
+        $sh = StudentHomework::findOrFail($id);
+        $sh->delete();
+        return redirect('student_homework');
     }
 }

@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ciclo extends Model
-{
-    protected $fillable=['ciclo','description'];
+{   
+    protected $table = 'cicles';
+    protected $fillable=['cicle','description'];
     use HasFactory;
 
     public function level_sections(){

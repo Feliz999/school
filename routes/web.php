@@ -31,6 +31,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('teacher','TeacherController');
     Route::resource('people','PeopleController');
     Route::resource('homework','HomeworkController');
+    Route::resource('number','NumberController');
+    Route::resource('student_homework','NumberController');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,4 +1,4 @@
-<div class="modal fade" id="eliminarMatter-{{$matter->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminarTeacher-{{$teacher->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header btn btn-danger">
@@ -6,10 +6,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{route('matter.destroy',$matter->id)}}" method="post" class="form">
+            <form action="{{route('teacher.destroy',$teacher->id)}}" method="post" class="form">
                 <input name="_method" type="hidden" value="DELETE">
                 @csrf
-                <h4>Confirma que desea eliminar la Materia: <b>{{$matter->name}}</b></h4>
+                <h4>Confirma que desea eliminar el Catedrático. <b>{{$teacher->fullname}}</b></h4>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
                   <button class="btn btn-danger">Eliminar</button>

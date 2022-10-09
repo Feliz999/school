@@ -11,7 +11,7 @@
                 @csrf
                 <div class="input-group mb-3 input-group-lg">
                     <label for="name" class="input-group-text" id="inputGroup-sizing-lg">Ciclo</label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="ciclo"  value="{{$ciclo->ciclo}}" required>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="cicle"  value="{{$ciclo->cicle}}" required>
                 </div>
                 <div class="input-group mb-3 input-group-lg">
                     <label for="description" class="input-group-text" id="inputGroup-sizing-lg">Descripción</label>

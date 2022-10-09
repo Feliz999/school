@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Level;
-use App\Models\Number;
+use App\Models\LevelSection;
 use Illuminate\Http\Request;
 
-class LevelController extends Controller
+class LevelSectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,11 @@ class LevelController extends Controller
     public function index()
     {
         //
-        $levels = Level::orderBy('id','desc')->simplePaginate(10);
-        $numbers = Number::all();
-        if(isset($levels)){
-            return view('level.index',compact('levels','numbers'));
+        $lss = LevelSection::orderBy('id','desc')->simplePaginate(10);
+        if(isset($lss)){
+            return view('level_section.index',compact('lss'));
         }else{
-            return view('level.index');
+            return view('level_section.index');
         }
     }
 
@@ -44,17 +42,17 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         //
-        Level::create($request->all());
-        return redirect('level');
+        LevelSection::create($request->all());
+        return redirect('level_section');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\LevelSection  $levelSection
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(LevelSection $levelSection)
     {
         //
     }
@@ -62,10 +60,10 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\LevelSection  $levelSection
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit(LevelSection $levelSection)
     {
         //
     }
@@ -74,28 +72,27 @@ class LevelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\LevelSection  $levelSection
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $level = Level::findOrFail($id);
-        $level->update($request->all());
-        return redirect('level');
+        $ls = LevelSection::findOrFail($id);
+        return redirect('level_section');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\LevelSection  $levelSection
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $level = Level::findOrFail($id);
-        $level->delete();
-        return redirect('level');
+        $ls = LevelSection::findOrFail($id);
+        $ls->delete();
+        return redirect('level_section');
     }
 }

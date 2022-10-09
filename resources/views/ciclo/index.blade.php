@@ -9,7 +9,7 @@
                 @csrf
                 <div class="input-group mb-3 input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                    <input type="text" name="ciclo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                    <input type="text" name="cicle" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg">Descripción</span>
@@ -36,7 +36,7 @@
                     @foreach($ciclos as $ciclo)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$ciclo->ciclo}}</td>
+                        <td>{{$ciclo->cicle}}</td>
                         <td>{{$ciclo->description}}</td>
                         <td>
                             <a href="" data-bs-toggle="modal" data-bs-target="#editarCiclo-{{$ciclo->id}}"><i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw"></i></a>

@@ -11,6 +11,15 @@
                     <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
                     <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                 </div>
+                <div class="input-group mb-3 input-group-lg">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
+                    <select name="number_id" class="form-control" id="number_id">
+                        <option value="" disabled selected>--Elegir un número--</option>
+                        @foreach($numbers as $number)
+                        <option value="{{$number->id}}">{{$number->number}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg">Descripción</span>
                     <textarea name="description" id="description" cols="30" rows="10" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></textarea>
@@ -28,7 +37,8 @@
                     <thead class="bg-primary text-white">
                         <tr>
                             <th scope="row">No.</th>
-                            <th scope="row">Nombre</th>
+                            <th scope="row">Grado</th>
+                            <th scope="row">Nivel</th>
                             <th scope="row">Descripción</th>
                             <th scope="row">Acción</th>
                         </tr>
@@ -37,6 +47,7 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$level->name}}</td>
+                        <td>{{$level->number->number}}</td>
                         <td>{{$level->description}}</td>
                         <td>
                             <a href="" data-bs-toggle="modal" data-bs-target="#editarLevel-{{$level->id}}"><i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw"></i></a>

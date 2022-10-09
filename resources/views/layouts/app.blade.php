@@ -62,6 +62,8 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                               <li><a class="dropdown-item" href="/student">Estudiante</a></li>
+                              <li><a class="dropdown-item" href="/homework">Trabajos</a></li>
+                              <li><a class="dropdown-item" href="/homework"></a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -70,6 +72,14 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                               <li><a class="dropdown-item" href="/teacher">Catedráticos</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Padres de Familia
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                              <li><a class="dropdown-item" href="/people">Padres de Familia</a></li>
                             </ul>
                         </li>
                     </ul>

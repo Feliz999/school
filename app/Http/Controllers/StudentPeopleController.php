@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Level;
-use App\Models\Number;
+use App\Models\StudentPeople;
 use Illuminate\Http\Request;
 
-class LevelController extends Controller
+class StudentPeopleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,13 @@ class LevelController extends Controller
     public function index()
     {
         //
-        $levels = Level::orderBy('id','desc')->simplePaginate(10);
-        $numbers = Number::all();
-        if(isset($levels)){
-            return view('level.index',compact('levels','numbers'));
+        $student_peoples = StudentPeople::orderBy('id','desc')->simplePaginate(10);
+        if(isset($student_peoples)){
+            return view('student_people.index',compact('student_peoples'));
         }else{
-            return view('level.index');
+            return view('student_people.index');
         }
+        
     }
 
     /**
@@ -44,17 +43,17 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         //
-        Level::create($request->all());
-        return redirect('level');
+        StudentPeople::create($request->all());
+        return redirect('student_people');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentPeople  $studentPeople
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(StudentPeople $studentPeople)
     {
         //
     }
@@ -62,10 +61,10 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentPeople  $studentPeople
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit(StudentPeople $studentPeople)
     {
         //
     }
@@ -74,28 +73,28 @@ class LevelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentPeople  $studentPeople
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $level = Level::findOrFail($id);
-        $level->update($request->all());
-        return redirect('level');
+        $sp = StudentPeople::findOrFail($id);
+        $sp->update($request->all());
+        return redirect('student_people');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\StudentPeople  $studentPeople
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $level = Level::findOrFail($id);
-        $level->delete();
-        return redirect('level');
+        $sp = StudentPeople::findOrFail($id);
+        $sp->delete();
+        return redirect('student_people');
     }
 }
