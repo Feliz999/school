@@ -17,6 +17,7 @@ class CreateHomeworkTable extends Migration
             $table->id();
             $table->string('name',150);
             $table->integer('points');
+            $table->datetime('date_expiration');
             $table->text('description')->nullable();
             $table->tinyinteger('is_active')->default(1);
             $table->bigInteger('type_homework_id')->unsigned();

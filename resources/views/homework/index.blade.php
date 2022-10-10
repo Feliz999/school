@@ -17,14 +17,23 @@
                 </div>
                 <div class="input-group mb-3 input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-solid fa-calendar-days"></i></span>
-                    <input type="date" name="birthday" class="form-control" placeholder="Fecha de Cumpleaños" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                    <input type="date" name="date_expiration" class="form-control" placeholder="Fecha de Cumpleaños" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                 </div>
                 <div class="input-group mb-3 input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-brands fa-creative-commons-nd"></i></span>
-                    <select name="" id="" class="form-control">
+                    <select name="type_homework_id" id="" class="form-control">
                         <option value="" disabled selected>--Elegir un tipo de trabajo--</option>
                         @foreach($typeHomeworks as $th)
                         <option value="{{$th->id}}">{{$th->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="input-group mb-3 input-group-lg">
+                    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-brands fa-creative-commons-nd"></i></span>
+                    <select name="matter_id" id="" class="form-control">
+                        <option value="" disabled selected>--Elegir una materia--</option>
+                        @foreach($matters as $matter)
+                        <option value="{{$matter->id}}">{{$matter->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -42,7 +51,7 @@
             </form>
         </div>
         <div class="col-md-9 text-center shadow-lg p-3 mb-5 bg-body rounded">
-            <h3>Listado de Tareas</h3>
+            <h3>Listado de Trabajos</h3>
             <hr>
             @if(isset($homeworks))
                 <table class="table table-striped table-hover">
@@ -51,6 +60,7 @@
                             <th scope="row">No.</th>
                             <th scope="row">Nombre</th>
                             <th scope="row">Puntos</th>
+                            <th scope="row">Fecha de Expiración</th>
                             <th scope="row">Descripción</th>
                             <th scope="row">Acción</th>
                         </tr>
@@ -60,6 +70,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$hm->name}}</td>
                         <td>{{$hm->points}}</td>
+                        <td>{{$hm->date_expiration}}</td>
                         <td>{{$hm->description}}</td>
                         <td>
                             <a href="" data-bs-toggle="modal" data-bs-target="#editarHomework-{{$hm->id}}"><i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw"></i></a>

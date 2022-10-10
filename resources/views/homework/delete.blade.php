@@ -1,4 +1,4 @@
-<div class="modal fade" id="eliminarPeople-{{$people->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminarHomework-{{$hm->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header btn btn-danger">
@@ -6,10 +6,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{route('people.destroy',$people->id)}}" method="post" class="form">
+            <form action="{{route('homework.destroy',$hm->id)}}" method="post" class="form">
                 <input name="_method" type="hidden" value="DELETE">
                 @csrf
-                <h4>Confirma que desea eliminar el Padre de Familia. <b>{{$people->fullname}}</b></h4>
+                <h4>Confirma que desea eliminar el trabajo:  <b>{{$hm->name}}</b></h4>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
                   <button class="btn btn-danger">Eliminar</button>
