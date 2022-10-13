@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ciclo extends Model
+class Cicle extends Model
 {   
     protected $table = 'cicles';
     protected $fillable=['cicle','description'];

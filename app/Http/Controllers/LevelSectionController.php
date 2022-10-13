@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\LevelSection;
+use App\Models\Level;
+use App\Models\Section;
+use App\Models\Matter;
+use App\Models\Cicle;
+use App\Models\Teacher;
+use App\Models\Period;
+
 use Illuminate\Http\Request;
 
 class LevelSectionController extends Controller
@@ -15,9 +22,16 @@ class LevelSectionController extends Controller
     public function index()
     {
         //
+        $levels = Level::all();
+        $sections = Section::all();
+        $matters = Matter::all();
+        $cicles = Cicle::all();
+        $teachers = Teacher::all();
+        $periods = Period::all();
+
         $lss = LevelSection::orderBy('id','desc')->simplePaginate(10);
         if(isset($lss)){
-            return view('level_section.index',compact('lss'));
+            return view('level_section.index',compact('lss','levels','sections','matters','cicles','teachers','periods'));
         }else{
             return view('level_section.index');
         }

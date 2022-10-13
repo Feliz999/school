@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Period;
+use App\Models\Number;
 use Illuminate\Http\Request;
 
 class PeriodController extends Controller
@@ -16,8 +17,9 @@ class PeriodController extends Controller
     {
         //
         $periods = Period::orderBy('id','desc')->simplePaginate(10);
+        $numbers = Number::all();
         if(isset($periods)){
-            return view('period.index',compact('periods'));
+            return view('period.index',compact('periods','numbers'));
         }else{
             return view('period.index');
         }

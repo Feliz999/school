@@ -67,7 +67,7 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$student->code}}</td>
-                        <td>{{$student->fullname}}</td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#addHomework-{{$student->id}}" class="nav-link" href="">{{$student->fullname}}</a></td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->cui}}</td>
                         <td>
@@ -77,6 +77,7 @@
                     </tr>
                         @include('student.editar')
                         @include('student.delete')
+                        @include('student.addHomework')
                     @endforeach
                 </table>
                 {{ $students->links() }}

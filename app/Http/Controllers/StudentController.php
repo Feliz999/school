@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Homework;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -16,8 +17,9 @@ class StudentController extends Controller
     {
         //
         $students = Student::orderBy('id','desc')->paginate(3);
+        $homeworks = Homework::all();
         if(isset($students)){
-            return view('student.index',compact('students'));
+            return view('student.index',compact('students','homeworks'));
         }else{
             return view('student.index');
         }

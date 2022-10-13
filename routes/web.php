@@ -30,9 +30,11 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('student','StudentController');
     Route::resource('teacher','TeacherController');
     Route::resource('people','PeopleController');
+    Route::resource('period','PeriodController');
     Route::resource('homework','HomeworkController');
     Route::resource('number','NumberController');
     Route::resource('student_homework','NumberController');
+    Route::resource('level_section','LevelSectionController');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

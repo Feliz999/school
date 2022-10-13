@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Period extends Model
 {
     use HasFactory;
-    protected $fillable = ['period','number_id','description'];
+    protected $fillable = ['period','number_id'];
 
     public function number(){
         return $this->belongsTo('App\Models\Number');

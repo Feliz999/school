@@ -82,6 +82,14 @@
                               <li><a class="dropdown-item" href="/people">Padres de Familia</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administración
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                              <li><a class="dropdown-item" href="/level_section">Asignar Materias</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     @endguest
 

@@ -1,0 +1,33 @@
+<div class="modal fade" id="editarPeriod-{{$period->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header btn btn-primary">
+          <h5 class="display-6">Editar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{{route('period.update',$period->id)}}" method="post" class="form">
+                <input name="_method" type="hidden" value="PATCH">
+                @csrf
+                <div class="input-group mb-3 input-group-lg">
+                    <label for="name" class="input-group-text" id="inputGroup-sizing-lg">Nombre</label>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="name"  value="{{$period->name}}" required>
+                </div>
+                <div class="input-group mb-3 input-group-lg">
+                  <span class="input-group-text" id="inputGroup-sizing-lg">Número</span>
+                  <select name="number_id" class="form-control" id="number_id">
+                      <option value="" disabled selected>--Elegir un número--</option>
+                      @foreach($numbers as $number)
+                      <option value="{{$number->id}}" {{($number->id == $period->number_id) ? 'selected' : ''}}>{{$number->number}}</option>
+                      @endforeach
+                  </select>
+              </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                  <button class="btn btn-primary">Editar</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ciclo;
+use App\Models\Cicle;
 use Illuminate\Http\Request;
 
 class CicloController extends Controller
@@ -15,7 +15,7 @@ class CicloController extends Controller
     public function index()
     {
         //
-        $ciclos = Ciclo::orderBy('id','desc')->simplePaginate(5);
+        $ciclos = Cicle::orderBy('id','desc')->simplePaginate(5);
         if(isset($ciclos)){
             return view('ciclo.index',compact('ciclos'));
         }else{
@@ -42,7 +42,7 @@ class CicloController extends Controller
     public function store(Request $request)
     {
         //
-        Ciclo::create($request->all());
+        Cicle::create($request->all());
         return redirect('ciclo');
     }
 
@@ -78,7 +78,7 @@ class CicloController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $ciclo = Ciclo::findOrFail($id);
+        $ciclo = Cicle::findOrFail($id);
         $ciclo->update($request->all());
         return redirect('ciclo');
     }
@@ -92,7 +92,7 @@ class CicloController extends Controller
     public function destroy($id)
     {
         //
-        $ciclo = Ciclo::findOrFail($id);
+        $ciclo = Cicle::findOrFail($id);
         $ciclo->delete();
         return redirect('ciclo');
     }
