@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentHomework;
+use App\Models\Homework;
+use App\Models\LevelSection;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentHomeworkController extends Controller
@@ -15,9 +18,14 @@ class StudentHomeworkController extends Controller
     public function index()
     {
         //
+        $homeworks = Homework::all();
+        $level_sections = LevelSection::all();
         $student_homeworks = StudentHomework::orderBy('id','desc')->simplePaginate(10);
+        $sh = StudentHomework::all();
+        $total_puntos = $sh->sum('points');
+        $students = Student::all();
         if(isset($student_homeworks)){
-            return view('student_homework.index',compact('student_homeworks'));
+            return view('student_homework.index',compact('student_homeworks','homeworks','level_sections','total_puntos','students'));
         }else{
             return view('student_homework.index');
         }
@@ -43,7 +51,7 @@ class StudentHomeworkController extends Controller
     {
         //
         StudentHomework::create($request->all());
-        return redirect('student_homework');
+        return redirect('student');
     }
 
     /**

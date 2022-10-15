@@ -33,8 +33,11 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('period','PeriodController');
     Route::resource('homework','HomeworkController');
     Route::resource('number','NumberController');
-    Route::resource('student_homework','NumberController');
+    Route::resource('student_homework','StudentHomeworkController');
     Route::resource('level_section','LevelSectionController');
+    Route::resource('student_level','StudentLevelController');
+    Route::get('descargar-notas/{id}', 'StudentController@print_nota');
+    
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

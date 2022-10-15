@@ -8,11 +8,11 @@
             <form action="{{route('level.store')}}" method="post" class="form">
                 @csrf
                 <div class="input-group mb-3 input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Grado</span>
                     <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
                 </div>
                 <div class="input-group mb-3 input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Nivel</span>
                     <select name="number_id" class="form-control" id="number_id">
                         <option value="" disabled selected>--Elegir un número--</option>
                         @foreach($numbers as $number)

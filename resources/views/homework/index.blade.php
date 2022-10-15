@@ -30,7 +30,7 @@
                 </div>
                 <div class="input-group mb-3 input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-brands fa-creative-commons-nd"></i></span>
-                    <select name="matter_id" id="" class="form-control">
+                    <select name="matter_id" id="matter_id" class="form-control">
                         <option value="" disabled selected>--Elegir una materia--</option>
                         @foreach($matters as $matter)
                         <option value="{{$matter->id}}">{{$matter->name}}</option>

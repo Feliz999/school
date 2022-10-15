@@ -9,7 +9,7 @@ class Homework extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','points','date_expiration','description','type_homework_id'];
+    protected $fillable = ['name','points','date_expiration','description','type_homework_id','matter_id'];
 
     public function type_homework(){
         return $this->belongsTo('App\Models\TypeHomework');
@@ -17,5 +17,8 @@ class Homework extends Model
 
     public function student_homeworks(){
         return $this->hasMany('App\Models\StudentHomework');
+    }
+    public function matter(){
+        return $this->belongsTo('App\Models\Matter');
     }
 }

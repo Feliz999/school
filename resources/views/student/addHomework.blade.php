@@ -1,4 +1,4 @@
-<div class="modal fade" id="addHomework-{{$student->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addHomework-{{$student->id}}">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header btn btn-primary">
@@ -6,45 +6,60 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{route('student.update',$student->id)}}" method="post" class="form">
-                <input name="_method" type="hidden" value="PATCH">
-                @csrf
-                <div class="input-group mb-3 input-group-lg">
-                  <span class="input-group-text" id="inputGroup-sizing-lg">Nombre Estudiante</span>
-                  <input type="text" value="{{$student->fullname}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required disabled>
-                  <input type="hidden" name="student_id" value="{{$student->id}}">
-              </div>
-              <div class="input-group mb-3 input-group-lg">
-                  <span class="input-group-text" id="inputGroup-sizing-lg">Trabajo</span>
-                  <select name="homework_id" id="homework_id" class="form-control">
-                    <option value="" disabled selected>--Elegir un trabajo --</option>
-                    @foreach($homeworks as $hm)
-                        <option value="{{$hm->id}}">{{$hm->name}}</option>
-                    @endforeach
-                  </select>
-              </div>
-              <div class="input-group mb-3 input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Grado Asignado</span>
-                <select name="level_section_id" id="level_section_id" class="form-control">
-                  <option value="" disabled selected>--Elegir un trabajo --</option>
-                  @foreach($homeworks as $hm)
-                      <option value="{{$hm->id}}">{{$hm->name}}</option>
-                  @endforeach
-                </select>
-            </div>
-            <div class="input-group mb-3 input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Puntos</span>
-                <input type="text" class="form-control">
-            </div>
-              <div class="input-group input-group-lg">
-                  <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa-solid fa-image"></i></span>
-                  <input type="file" name="" class="form-control" id="">
-              </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                  <button class="btn btn-primary">Calificar</button>
-                </div>
-            </form>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Materia</th>
+                <th>Catedrático</th>
+              </tr>
+            </thead>
+            @foreach($matters as $ma)
+              @foreach($student_levels as $sl)
+                @if($sl->student_id == $student->id)
+                  @if($sl->level_section->matter->id == $ma->id)
+                    <tbody>
+                      <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td><button type="button" data-bs-toggle="modal" data-bs-whatever="{{$ma->id}}" data-bs-target="#nota-{{$student->id}}" data-bs-dismiss="modal fade" class="btn btn-info">{{$sl->level_section->matter->name}}</button></td>
+                        <td>{{$sl->level_section->teacher->fullname}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">No.</th>
+                        <th scope="row">Alumno</th>
+                        <th scope="row">Trabajo</th>
+                        <th scope="row">Puntos</th>
+                        @php $total_puntos = 0; @endphp
+                        @foreach($student_homeworks as $sh)
+                          @if($sh->student_id == $student->id)
+                            @if($sh->homework->matter_id == $ma->id)
+                            <td>
+                              
+                            </td>
+                              <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$sh->student->fullname}}</td>
+                                <td>{{$sh->homework->name}}</td>
+                                <td>{{$sh->points}}/{{$sh->homework->points}}</td>
+                              </tr>
+                              {{$total_puntos = $total_puntos + $sh->points}}
+                            @endif
+                          @endif
+                        @endforeach
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>{{$total_puntos}}/100</td>
+                        </tr>
+                        
+                      </tr>
+                    </tbody>
+                  @endif
+                @endif
+              @endforeach
+            @endforeach
+          </table>
         </div>
       </div>
     </div>

@@ -21,9 +21,11 @@ class CreateHomeworkTable extends Migration
             $table->text('description')->nullable();
             $table->tinyinteger('is_active')->default(1);
             $table->bigInteger('type_homework_id')->unsigned();
+            $table->bigInteger('matter_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('type_homework_id')->references('id')->on('type_homework');
+            $table->foreign('matter_id')->references('id')->on('matters');
         });
     }
 

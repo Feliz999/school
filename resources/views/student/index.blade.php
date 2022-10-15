@@ -67,19 +67,24 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$student->code}}</td>
-                        <td><a data-bs-toggle="modal" data-bs-target="#addHomework-{{$student->id}}" class="nav-link" href="">{{$student->fullname}}</a></td>
+                        <td><a class="nav nav-link" data-bs-target="#addHomework-{{$student->id}}" data-bs-toggle="modal">{{$student->fullname}}</a></td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->cui}}</td>
                         <td>
                             <a href="" data-bs-toggle="modal" data-bs-target="#editarStudent-{{$student->id}}"><i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw"></i></a>
                             <a href="" data-bs-toggle="modal" data-bs-target="#eliminarStudent-{{$student->id}}"><i data-fa-symbol="delete" class="fa-solid fa-trash fa-fw" style="color:red"></i></a>
+                            <a href="{{action('StudentController@print_nota',$student->id)}}" ><i data-fa-symbol="delete" class="fa-solid fa-print fa-fw" style="color:green"></i></a>
+                        </td>
+                        <td>
+                            @include('student.addHomework')
                         </td>
                     </tr>
+                    
+                    
                         @include('student.editar')
                         @include('student.delete')
-                        @include('student.addHomework')
-                    @endforeach
-                </table>
+                        @endforeach
+                    </table>
                 {{ $students->links() }}
             @else
                 <h3>No Existen Registros!</h3>
@@ -88,4 +93,5 @@
         </div>
     </div>
 </div>
+
 @endsection

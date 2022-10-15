@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light text-white bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{asset('images/logo.jpeg')}}" width="50" alt="">                    
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -87,7 +87,9 @@
                                 Administración
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                              <li><a class="dropdown-item" href="/level_section">Asignar Materias</a></li>
+                              <li><a class="dropdown-item" href="/level_section">Asignar Grado</a></li>
+                              <li><a class="dropdown-item" href="/student_level">Asignar Materias</a></li>
+                              <li><a class="dropdown-item" href="/number">Número</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -147,5 +149,7 @@
             </footer>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    @stack('scripts')
 </body>
 </html>

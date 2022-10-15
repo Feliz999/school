@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Matter;
 use App\Models\Homework;
+use App\Models\TypeHomework;
+use App\Models\LevelSection;
+use App\Models\StudentHomework;
+use App\Models\StudentLevel;
 use Illuminate\Http\Request;
+use PDF;
+use Carbon\Carbon;
 
 class StudentController extends Controller
 {
@@ -18,8 +25,13 @@ class StudentController extends Controller
         //
         $students = Student::orderBy('id','desc')->paginate(3);
         $homeworks = Homework::all();
+        $level_sections = LevelSection::all();
+        $student_homeworks = StudentHomework::all();
+        $total_puntos = 0;
+        $student_levels = StudentLevel::all();
+        $matters = Matter::all();
         if(isset($students)){
-            return view('student.index',compact('students','homeworks'));
+            return view('student.index',compact('students','homeworks','level_sections','student_homeworks','student_levels','total_puntos','matters'));
         }else{
             return view('student.index');
         }
@@ -33,6 +45,21 @@ class StudentController extends Controller
     public function create()
     {
         //
+    }
+
+    public function print_nota($id){
+        $now = Carbon::now();
+        $now = $now->locale('es');
+        $homework = StudentHomework::where('student_id',$id)->get();
+        $student_level = StudentLevel::where('student_id',$id)->get();
+        $level = $student_level->first();
+        $matters = Matter::all();
+        $student = Student::findOrFail($id);
+        $type_homeworks = TypeHomework::all();
+        $pdf = PDF::loadView('pdf.notas',compact('homework','student_level','student','type_homeworks','level','matters','now'));
+        $pdf->setPaper('a4','portrait');
+        return $pdf->download('Notas -'.$student->fullname.'.pdf');
+
     }
 
     /**

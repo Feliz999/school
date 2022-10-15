@@ -18,4 +18,8 @@ class Matter extends Model
     public function student_homeworks(){
         return $this->hasMany('App\Models\StudentHomework');
     }
+
+    public function homeworks(){
+        return $this->hasMany('App\Models\Homework');
+    }
 }
