@@ -63,7 +63,7 @@
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                               <li><a class="dropdown-item" href="/student">Estudiante</a></li>
                               <li><a class="dropdown-item" href="/homework">Trabajos</a></li>
-                              <li><a class="dropdown-item" href="/homework"></a></li>
+                              <li><a class="dropdown-item" href="/student_homework">Calificar</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -90,6 +90,7 @@
                               <li><a class="dropdown-item" href="/level_section">Asignar Grado</a></li>
                               <li><a class="dropdown-item" href="/student_level">Asignar Materias</a></li>
                               <li><a class="dropdown-item" href="/number">Número</a></li>
+                              <li><a class="dropdown-item" href="/period">Período</a></li>
                             </ul>
                         </li>
                     </ul>
